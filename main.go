@@ -36,7 +36,10 @@ func main() {
 	windows := tree.swayWindows()
 	names := ""
 	for _, w := range windows {
-		names += w.Name + "\n"
+		name := strings.TrimSpace(w.Name)
+		if name != "" {
+			names += name + "\n"
+		}
 	}
 
 	outp, err := fuzzelExec(os.Args[1:], names)
